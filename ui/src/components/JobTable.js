@@ -75,19 +75,23 @@ const JobTable = () => {
         getJobs()
     }, []);
 
+    const getJob = () => jobs
+
     useEffect(() => {
         pb.collection('jobs').subscribe('*', function (e) {
             console.log("Updated event from server", e);
-
             const updatedJob = e.record;
-            const index = jobs.findIndex(job => job.id === updatedJob.id);
-            if (index !== -1) {
-                let newJobs = [...jobs];
-                newJobs[index] = updatedJob;
-                setJobs(newJobs);
-            } else {
-                setJobs([updatedJob, ...jobs]);
-            }
+
+            setJobs(oldJobs => {
+                const index = oldJobs.findIndex(job => job.id === updatedJob.id);
+                if (index !== -1) {
+                    let newJobs = [...oldJobs];
+                    newJobs[index] = updatedJob;
+                    return newJobs;
+                } else {
+                    return [updatedJob, ...oldJobs];
+                }
+            })
         });
     }, []);
 
