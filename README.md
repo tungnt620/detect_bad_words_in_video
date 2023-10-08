@@ -12,6 +12,18 @@ cd from_video_to_audio && uvicorn main:app --reload --port 8000
 ```
 Access swagger at http://localhost:8000/docs
 
+## Start speech to text service
+```bash
+cd speech_to_text && uvicorn main:app --reload --port 8001
+```
+Access swagger at http://localhost:8001/docs
+
+## Start detect bad words service
+```bash
+cd detect_bad_words && uvicorn main:app --reload --port 8002
+```
+Access swagger at http://localhost:8002/docs
+
 ## Start worker service
 
 Start redis server at localhost, port 6379 (easy way: run redis server in docker and forward port 6379 to localhost)
