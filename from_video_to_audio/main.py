@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import requests
-import ffmpeg
+from moviepy.video.io.VideoFileClip import VideoFileClip
 import file_server
 
 app = FastAPI()
@@ -24,12 +24,12 @@ def download_video(url, filename):
 
 
 def from_video_to_audio(filename):
-    (
-        ffmpeg
-        .input(get_local_file_path(filename))
-        .output(get_mp3_output_local_file_path(filename))
-        .run()
-    )
+    video_clip = VideoFileClip(get_local_file_path(filename))
+    audio_clip = video_clip.audio
+    audio_clip.write_audiofile(get_mp3_output_local_file_path(filename))
+    video_clip.close()
+    audio_clip.close()
+
     print(f"Convert video to audio success, mp3 stored at {get_mp3_output_local_file_path(filename)}")
 
 

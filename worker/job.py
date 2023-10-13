@@ -31,17 +31,21 @@ def process_job(collection_id, record_id, video_url, filename):
         "mp3_url": mp3_url,
     })
 
-    # TODO: from audio to text
     speech_to_text_response = requests.post(f"http://127.0.0.1:8001/?mp3_url={mp3_url}")
     text = speech_to_text_response.json()["text"]
 
-    # TODO: detect bad words from text
+    result = {"text": text}
+
+    update_job_progress(collection_id, record_id, {
+        "result": result
+    })
+
     detect_bad_words_response = requests.post(f"http://127.0.0.1:8002/?text={text}")
-    text_with_bad_words_highlight = detect_bad_words_response.json()["text_with_bad_words_highlighted"]
+    explanation = detect_bad_words_response.json()["explanation"]
+
+    result["explanation"] = explanation
 
     update_job_progress(collection_id, record_id, {
         "status": "successes",
-        "result": text_with_bad_words_highlight
+        "result": result
     })
-
-    pass

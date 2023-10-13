@@ -26,3 +26,7 @@ __pycache__/
 from_video_to_audio/video
 .idea
 ui/node_modules
+speech_to_text/google_secret_key.json
+speech_to_text/audio
+detect_bad_words/wordvectors/
+detect_bad_words/trained_models/

@@ -5,6 +5,13 @@ Use python 3.11
 pip install -r requirements.txt
 ```
 
+## Download resource `punkt`
+Run the Python interpreter and type the commands:
+> import nltk
+> 
+> nltk.download()
+
+
 ## Start from video to audio service
 ```bash
 mkdir -p from_video_to_audio/video/out
@@ -14,6 +21,7 @@ Access swagger at http://localhost:8000/docs
 
 ## Start speech to text service
 ```bash
+mkdir -p speech_to_text/audio
 cd speech_to_text && uvicorn main:app --reload --port 8001
 ```
 Access swagger at http://localhost:8001/docs
@@ -29,20 +37,23 @@ Access swagger at http://localhost:8002/docs
 Start redis server at localhost, port 6379 (easy way: run redis server in docker and forward port 6379 to localhost)
 ```bash
 cd worker && uvicorn main:app --reload  --port 8080
+```
+```bash
 cd worker && rq worker --with-scheduler
 ```
 Access swagger at http://localhost:8080/docs
 
 ## Start UI
 ```bash
-cd ui && npm install
-cd ui && npm start
+cd ui && npm install && npm start
 ```
 Access UI at http://localhost:3000
 
 
 ## Start BE service
-`cd be && ./pocketbase serve`
+```bash
+cd be && ./pocketbase serve
+```
 
 Access BE admin at http://127.0.0.1:8090/_/
 

@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 
+from service import ExtractTextFromVideoService
+
 app = FastAPI()
 
 
@@ -12,6 +14,6 @@ def index():
 def from_audio_to_text(mp3_url: str):
     print(f"Start process {mp3_url}")
 
-    # TODO: add logic here
+    text = ExtractTextFromVideoService().extract(mp3_url)
 
-    return {"success": True, "text": "text from audio"}
+    return {"success": True, "text": text}

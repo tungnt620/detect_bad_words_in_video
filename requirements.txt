@@ -44,3 +44,10 @@ uvicorn==0.23.2
 uvloop==0.17.0
 watchfiles==0.20.0
 websockets==11.0.3
+numpy~=1.26.0
+keras~=2.14.0
+scikit-learn~=1.3.1
+nltk~=3.8.1
+dill~=0.3.7
+lime~=0.2.0.1
+moviepy~=1.0.3

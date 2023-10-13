@@ -17,7 +17,7 @@ def index():
 
 @app.post("/")
 def submit_job(collection_id: str, record_id: str, video_url: str, filename: str):
-    q.enqueue(process_job, collection_id, record_id, video_url, filename)
+    q.enqueue(process_job, collection_id, record_id, video_url, filename, job_timeout=3600)
     print(f"Submit job successes, {collection_id} {record_id} {video_url} {filename}")
 
     return {"success": True}
