@@ -42,4 +42,17 @@ class ExtractTextFromVideoService:
         for result in response.results:
             text = result.alternatives[0].transcript
 
-        return text
+        return """
+         má mày là con trai em thế con cu làm
+con gì má mày phải tiểu con mày
+ghê Mấy anh má làm như bê đê vậy Sao
+không cu ha ha ha má mấy thằng
+này không bao giờ được bú cu nữa là phải
+rồi má mày phải tỉa lông cu chứ Tiểu
+Long cua nó có hai loại cho mày một á Nó
+làm con cua bể nhìn bự hơn con hai á
+Uống mát có ai muốn bú cu mà bị lâu
+dính trên răng hết á hiểu
+        """
+
+        # return text

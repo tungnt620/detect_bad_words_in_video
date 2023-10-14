@@ -48,14 +48,18 @@ Access swagger at http://localhost:8080/docs
 
 ## Start UI
 ```bash
-cd ui && npm install && npm start
+cd ui && npm install
+cd ui && npm start
+```
+```bash
+npm run build
 ```
 Access UI at http://localhost:3000
 
 
 ## Start BE service
 ```bash
-cd be && ./pocketbase serve
+cd be && ./pocketbase serve --http=0.0.0.0:8090
 ```
 
 Access BE admin at http://127.0.0.1:8090/_/
